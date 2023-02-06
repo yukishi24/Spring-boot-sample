@@ -1,0 +1,45 @@
+plugins {
+  id 'java'
+  id 'eclipse'
+  id 'project-report'
+  id 'org.springframework.boot' version '3.0.2'
+  id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+  compileOnly {
+    extendsFrom annotationProcessor
+  }
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+  implementation 'org.springframework.boot:spring-boot-starter-validation'
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  compileOnly 'org.projectlombok:lombok'
+  annotationProcessor 'org.projectlombok:lombok'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  // Bootstrap
+  // https://mvnrepository.com/artifact/org.webjars/bootstrap
+  implementation 'org.webjars:bootstrap:4.5.3'
+
+  // JQuery
+  // https://mvnrepository.com/artifact/org.webjars.bower/jquery
+  implementation 'org.webjars.bower:jquery:3.5.1'
+
+  // webjars
+  // https://mvnrepository.com/artifact/org.webjars/webjars-locator
+  implementation 'org.webjars:webjars-locator:0.40'
+}
+
+tasks.named('test') {
+  useJUnitPlatform()
+}
