@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.application.service.UserApplicationService;
+import com.example.form.SignupForm;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * ユーザー登録画面の処理を分けるクラス[Controller]
@@ -18,6 +21,7 @@ import com.example.application.service.UserApplicationService;
  */
 @Controller
 @RequestMapping("/user")
+@Slf4j
 public class SignupController {
 
 
@@ -31,7 +35,7 @@ public class SignupController {
    * @return
    */
   @GetMapping("/signup")
-  public String getSignup(Model model,Locale locale) {
+  public String getSignup(Model model,Locale locale,@ModelAttribute SignupForm form) {
 
     // 性別の取得
     Map<String, Integer> genderMap = userApplicationService.getGenderMap(locale);
@@ -48,7 +52,10 @@ public class SignupController {
    * @return
    */
   @PostMapping("/signup")
-  public String postSignup() {
+  public String postSignup(@ModelAttribute SignupForm form) {
+    
+    log.info(form.toString());
+    
     // ログイン画面にリダイレクト
     return "redirect:/login";
   }
