@@ -60,7 +60,7 @@
 					th:value="${item.value}" th:field="*{gender}" th:errorclass="is-invalid"/> <label class="form-check-label"
 					th:text="${item.key}"></label>
 			</div>
-			<div class="invalid-feedback" th:errors="*{gender}"></div>
+			<div class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
 		</div>
 		<input type="submit" th:value="#{user.signup.btn}" class="btn btn-primary w-100 mt-3" />
 	</form>
