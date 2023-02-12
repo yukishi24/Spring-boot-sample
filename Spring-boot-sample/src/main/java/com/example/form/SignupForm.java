@@ -19,30 +19,31 @@ import jakarta.validation.constraints.Pattern;
 public record SignupForm(
 
     // ユーザーID
-    @NotBlank 
-    @Email 
+    @NotBlank (groups = ValidGroup1.class) 
+    @Email (groups = ValidGroup2.class)
     String userId,
 
     // パスワード
-    @NotBlank @Length(min = 4, max = 100) 
-    @Pattern(regexp = "^[a-zA-Z0-9]+$") 
+    @NotBlank (groups = ValidGroup1.class) 
+    @Length(min = 4, max = 100,groups = ValidGroup2.class) 
+    @Pattern(regexp = "^[a-zA-Z0-9]+$",groups = ValidGroup2.class) 
     String password,
 
     // ユーザー名
-    @NotBlank 
+    @NotBlank (groups = ValidGroup1.class) 
     String userName,
 
     // 誕生日
     @DateTimeFormat(pattern = "yyyy/MM/dd") 
-    @NotNull 
+    @NotNull (groups = ValidGroup1.class)
     Date birthday,
 
     // 年齢
-    @Min(20) @Max(100) 
+    @Min(value = 20,groups = ValidGroup2.class) @Max(value = 100,groups = ValidGroup2.class) 
     Integer age,
 
     // 性別
-    @NotNull 
+    @NotNull (groups = ValidGroup1.class)
     Integer gender
     ) {
 
