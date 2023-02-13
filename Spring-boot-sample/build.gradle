@@ -39,6 +39,10 @@ dependencies {
   // webjars
   // https://mvnrepository.com/artifact/org.webjars/webjars-locator
   implementation 'org.webjars:webjars-locator:0.40'
+
+  // layout
+  // https://mvnrepository.com/artifact/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect
+  implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.5.3'
 }
 
 tasks.named('test') {
