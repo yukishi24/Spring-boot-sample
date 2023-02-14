@@ -11,6 +11,6 @@ public class UserListController {
   // ユーザー一覧画面の表示
   @GetMapping("/list")
   public String getUserList() {
-    return "userList";
+    return "user/list";
   }
 }
