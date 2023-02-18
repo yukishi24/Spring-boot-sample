@@ -5,17 +5,18 @@
 <head>
 </head>
 <body>
-	<nav layout:fragment="header"
-		class="navbar navbar-inverse navbar-fixed-top navbar-dark bg-dark">
-		<div class="container-build">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">SpringSample</a>
+	<th:block th:fragment="header">
+		<nav class="navbar navbar-inverse navbar-fixed-top navbar-dark bg-dark">
+			<div class="container-build">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">SpringSample</a>
+				</div>
 			</div>
-		</div>
-		<form method="post" th:action="@{/logout}">
-			<button class="btn btn-link pull-right navbar-brand" type="submit">
-				ログアウト</button>
-		</form>
-	</nav>
+			<form method="post" th:action="@{/logout}">
+				<button class="btn btn-link pull-right navbar-brand" type="submit">
+					ログアウト</button>
+			</form>
+		</nav>
+	</th:block>
 </body>
 </html>
