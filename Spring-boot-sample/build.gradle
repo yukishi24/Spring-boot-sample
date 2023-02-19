@@ -28,6 +28,15 @@ dependencies {
   compileOnly 'org.projectlombok:lombok'
   annotationProcessor 'org.projectlombok:lombok'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  
+  //  MyBatis
+  // https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
+  implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
+  
+  //modelmapper
+  // https://mvnrepository.com/artifact/org.modelmapper/modelmapper
+  implementation 'org.modelmapper:modelmapper:2.3.9'
+
   // Bootstrap
   // https://mvnrepository.com/artifact/org.webjars/bootstrap
   implementation 'org.webjars:bootstrap:4.5.3'
