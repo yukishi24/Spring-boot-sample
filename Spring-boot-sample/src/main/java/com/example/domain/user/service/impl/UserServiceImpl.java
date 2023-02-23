@@ -7,7 +7,7 @@ import com.example.domain.user.service.UserService;
 import com.example.repository.UserMapper;
 
 @Service
-public class UserServiceIpml implements UserService {
+public class UserServiceImpl implements UserService {
 
   @Autowired
   private UserMapper mapper;
@@ -17,7 +17,6 @@ public class UserServiceIpml implements UserService {
   public void signup(MUser user) {
     user.setDepartmentId(1);//部署
     user.setRole("ROLE_GENERAL");//ロール
-    mapper.insertOne(user);    
+    mapper.insertOne(user);
   }
-
 }
