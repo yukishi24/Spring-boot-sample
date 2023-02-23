@@ -2,6 +2,7 @@ package com.example.controller;
 
 import java.util.Locale;
 import java.util.Map;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.application.service.UserApplicationService;
+import com.example.domain.user.model.MUser;
+import com.example.domain.user.service.UserService;
 import com.example.form.GroupOrder;
 import com.example.form.SignupForm;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +33,8 @@ public class SignupController {
 
   @Autowired
   private UserApplicationService userApplicationService;
+  private UserService userService;
+  private ModelMapper modelMapper;
 
   /**
    * ユーザー登録画面の表示
@@ -55,8 +60,8 @@ public class SignupController {
    * @return
    */
   @PostMapping("/signup")
-  public String postSignup(Model model, Locale locale, @ModelAttribute @Validated(GroupOrder.class) SignupForm form,
-      BindingResult bindingResult) {
+  public String postSignup(Model model, Locale locale,
+      @ModelAttribute @Validated(GroupOrder.class) SignupForm form, BindingResult bindingResult) {
 
     // 入力チェック
     if (bindingResult.hasErrors()) {
@@ -65,6 +70,12 @@ public class SignupController {
     }
 
     log.info(form.toString());
+
+    // formをMUserクラスに変換
+    MUser user = modelMapper.map(form, MUser.class);
+
+    // ユーザー登録
+    userService.signup(user);
 
     // ログイン画面にリダイレクト
     return "redirect:/login";
