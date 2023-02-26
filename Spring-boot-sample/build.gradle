@@ -28,6 +28,19 @@ dependencies {
   compileOnly 'org.projectlombok:lombok'
   annotationProcessor 'org.projectlombok:lombok'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  //  PostgreSQL
+  // https://mvnrepository.com/artifact/org.postgresql/postgresql
+  runtimeOnly 'org.postgresql:postgresql'
+
+  //  MyBatis
+  // https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
+  implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
+
+  // modelmapper
+  // https://mvnrepository.com/artifact/org.modelmapper/modelmapper
+  implementation 'org.modelmapper:modelmapper:3.1.0'
+
+
   // Bootstrap
   // https://mvnrepository.com/artifact/org.webjars/bootstrap
   implementation 'org.webjars:bootstrap:4.5.3'
