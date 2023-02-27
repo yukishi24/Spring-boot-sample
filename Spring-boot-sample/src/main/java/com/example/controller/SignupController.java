@@ -30,7 +30,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SignupController {
 
-
   @Autowired
   private UserApplicationService userApplicationService;
   
