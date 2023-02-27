@@ -33,7 +33,11 @@ public class SignupController {
 
   @Autowired
   private UserApplicationService userApplicationService;
+  
+  @Autowired
   private UserService userService;
+  
+  @Autowired
   private ModelMapper modelMapper;
 
   /**
