@@ -76,9 +76,10 @@ public class SignupController {
 
     // formをMUserクラスに変換
     MUser user = modelMapper.map(form, MUser.class);
-
+    
+    System.out.println(user.getBirthday());
     // ユーザー登録
-    userService.signup(user);
+//    userService.signup(user);
 
     // ログイン画面にリダイレクト
     return "redirect:/login";
