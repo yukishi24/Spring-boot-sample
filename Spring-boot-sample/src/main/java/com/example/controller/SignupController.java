@@ -30,10 +30,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SignupController {
 
-
   @Autowired
   private UserApplicationService userApplicationService;
+
+  @Autowired
   private UserService userService;
+
+  @Autowired
   private ModelMapper modelMapper;
 
   /**
@@ -68,12 +71,14 @@ public class SignupController {
       // NG:ユーザー登録に戻る
       return getSignup(model, locale, form);
     }
-
+    // ログの出力
     log.info(form.toString());
 
     // formをMUserクラスに変換
     MUser user = modelMapper.map(form, MUser.class);
 
+    // formからMUserに変換時にうまくいかないため、Birthdayだけ別で変換。
+    user.setBirthday(form.birthday());
     // ユーザー登録
     userService.signup(user);
 
