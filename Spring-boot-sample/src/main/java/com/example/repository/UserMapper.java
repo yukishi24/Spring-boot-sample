@@ -11,4 +11,7 @@ public interface UserMapper {
 
   // ユーザー取得
   public List<MUser> findMany();
+
+  // ユーザー取得(一件取得)
+  public MUser findOne(String userId);
 }
