@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.repository.UserMapper">
+
+	<resultMap type="com.example.domain.user.model.MUser" id="user">
+		<id column="user_id" property="userId">
+		<result column="password" propertiy="password">
+		<result column="user_name" propertiy="userName">
+		<result column="birthday" propertiy="birthday">
+		<result column="age" propertiy="age">
+		<result column="gender" propertiy="gender">
+		<result column="department_id" propertiy="departmentId">
+		<result column="role" propertiy="role">
+	</resultMap>
+	
     <insert id="insertOne">
         insert into m_user(user_id,password,user_name,birthday,age,gender,department_id,role)
         values(#{userId},#{password},#{userName},#{birthday},#{age},#{gender},#{departmentId},#{role})
     </insert>
+    
     <select id="findMany" resultType="MUser">
         select * from m_user
     </select>
