@@ -21,4 +21,8 @@
     <select id="findMany" resultType="MUser">
         select * from m_user
     </select>
+    
+    <select id="findOne" resultType="user">
+        select * from m_user where useer_id = #(userId)
+    </select>
 </mapper>
