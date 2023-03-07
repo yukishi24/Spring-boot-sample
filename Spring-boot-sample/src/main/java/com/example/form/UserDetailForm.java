@@ -4,7 +4,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public final class UserDetailFrom {
+public final class UserDetailForm {
   private String userId;
   private String password;
   private String userName;
