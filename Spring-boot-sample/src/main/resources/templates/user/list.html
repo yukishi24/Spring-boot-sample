@@ -51,8 +51,7 @@
 							<td th:text="${#dates.format(item.birthday,'YYYY/MM/dd')}"></td>
 							<td th:text="${item.age}"></td>
 							<td th:text="${item.gender == 1} ? '男性': '女性'"></td>
-							<td><a class="btn btn-primary"
-								th:href="@{'/user/detail' + ${item.userId}}">詳細</a></td>
+							<td><a class="btn btn-primary" th:href="@{'/user/detail/' + ${item.userId}}">詳細</a></td>
 						</tr>
 					</table>
 				</div>
