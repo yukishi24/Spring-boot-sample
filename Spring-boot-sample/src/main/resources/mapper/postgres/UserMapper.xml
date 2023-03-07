@@ -23,6 +23,6 @@
     </select>
     
     <select id="findOne" resultType="MUser">
-        select * from m_user where useer_id = #{userId}
+        select * from m_user where user_id = #{userId}
     </select>
 </mapper>
