@@ -26,9 +26,10 @@ public class UserDetailController {
       @PathVariable("userId") String userId) {
     // ユーザー一件取得
     MUser user = userService.getUserOne(userId);
-    System.out.println(user.getBirthday());
     user.setPassword(null);
-
+    detailForm.setUserName(user.getUserName());
+    detailForm.setBirthday(user.getBirthday());
+    detailForm.setAge(user.getAge());
     // MUserをformに変換
     detailForm = modelMapper.map(user, UserDetailForm.class);
 
