@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.domain.user.model.MUser;
 import com.example.domain.user.service.UserService;
@@ -14,29 +15,30 @@ import com.example.form.UserDetailForm;
 @Controller
 @RequestMapping("/user")
 public class UserDetailController {
-
   @Autowired
   private UserService userService;
+
   @Autowired
   private ModelMapper modelMapper;
 
-  // ユーザー詳細を表示
   @GetMapping("/detail/{userId:.+}")
-  public String getUser(UserDetailForm detailForm, Model model,
-      @PathVariable("userId") String userId) {
-    // ユーザー一件取得
+  public String getUser(UserDetailForm form, Model model, @PathVariable("userId") String userId) {
     MUser user = userService.getUserOne(userId);
     user.setPassword(null);
-    detailForm.setUserName(user.getUserName());
-    detailForm.setBirthday(user.getBirthday());
-    detailForm.setAge(user.getAge());
-    // MUserをformに変換
-    detailForm = modelMapper.map(user, UserDetailForm.class);
-
-    // modelに登録
-    model.addAttribute("detailFrom", detailForm);
-
-    // ユーザー詳細画面の表示
+    form = modelMapper.map(user, UserDetailForm.class);
+    model.addAttribute("userDetailForm", form);
     return "user/detail";
+  }
+
+  @PostMapping(value = "/detail", params = "update")
+  public String updateUser(UserDetailForm form, Model model) {
+    userService.updateOne(form.getUserId(), form.getPassword(), form.getUserName());
+    return "redirect:/user/list";
+  }
+
+  @PostMapping(value = "/detail", params = "delete")
+  public String deleteUser(UserDetailForm form, Model model) {
+    userService.deleteOne(form.getUserId());
+    return "redirect:/user/list";
   }
 }
