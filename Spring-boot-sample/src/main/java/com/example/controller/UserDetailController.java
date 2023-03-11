@@ -23,19 +23,19 @@ public class UserDetailController {
 
   // ユーザー詳細を表示
   @GetMapping("/detail/{userId:.+}")
-  public String getUser(UserDetailForm detailForm, Model model,
+  public String getUser(UserDetailForm form, Model model,
       @PathVariable("userId") String userId) {
     // ユーザー一件取得
     MUser user = userService.getUserOne(userId);
     user.setPassword(null);
-    detailForm.setUserName(user.getUserName());
-    detailForm.setBirthday(user.getBirthday());
-    detailForm.setAge(user.getAge());
+    form.setUserName(user.getUserName());
+    form.setBirthday(user.getBirthday());
+    form.setAge(user.getAge());
     // MUserをformに変換
-    detailForm = modelMapper.map(user, UserDetailForm.class);
+    form = modelMapper.map(user, UserDetailForm.class);
 
     // modelに登録
-    model.addAttribute("detailFrom", detailForm);
+    model.addAttribute("detailFrom", form);
 
     // ユーザー詳細画面の表示
     return "user/detail";
