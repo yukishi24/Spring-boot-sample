@@ -10,7 +10,13 @@ public interface UserService {
 
   // ユーザー取得
   public List<MUser> getUsers();
-  
-//  ユーザー取得(1件)
+
+  // ユーザー取得(1件)
   public MUser getUserOne(String userId);
+
+  // ユーザー更新(一件)
+  public void updateOne(String userId, String password, String userName);
+
+  // ユーザー削除(一件)
+  public void deleteOne(String userId);
 }
