@@ -35,13 +35,13 @@ public class UserServiceImpl implements UserService {
 
   // ユーザー更新(一件)
   @Override
-  public void updateOne(String userId, String password, String userName) {
+  public void updateUserOne(String userId, String password, String userName) {
     mapper.updateOne(userId, password, userName);
   }
 
   // ユーザー削除(一件)
   @Override
-  public void deleteOne(String userId) {
+  public void deleteUserOne(String userId) {
     int count = mapper.deleteOne(userId);
   }
 }
