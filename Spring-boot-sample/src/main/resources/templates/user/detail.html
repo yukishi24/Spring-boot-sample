@@ -31,9 +31,9 @@
 		<div class="row">
 			<nav class="col-sm-10 offset-sm-2 main">
 				<form id="user-detail-form" method="post"
-					th:action="@{/user/detail}" class="form-signup "
+					th:action="@{/user/detail}" class="form-signup"
 					th:object="${userDetailForm}">
-					<input type="hidden" th:filed="*{userId}" />
+					<input type="hidden" th:field="*{userId}" />
 					<div class="header border-bottom">
 						<h1 class="h2">ユーザー詳細</h1>
 					</div>
@@ -63,7 +63,7 @@
 							</tr>
 							<tr>
 								<th>性別</th>
-								<td th:text="*{gender == 1 ? '女性' : '男性'}"></td>
+								<td th:text="*{gender == 1 ? '男性' : '女性'}"></td>
 							</tr>
 						</tbody>
 					</table>
