@@ -29,20 +29,11 @@
     
     <!-- ユーザー一件更新 -->
     <update id="updateOne">
-    	update
-    		m_user
-    	set
-    		password=#{password},
-    		user_name=#{username}
-    	where
-    		user_id=#{userId}
+        update m_user set password = #{password}, user_name = #{userName} where user_id = #{userId}
     </update>
     
     <!-- ユーザー一件削除 -->
     <delete id="deleteOne">
-    	delete from
-    		m_user
-    	where
-    		user_id=#{userId}
+        delete from m_user where user_id = #{userId}
     </delete>
 </mapper>
