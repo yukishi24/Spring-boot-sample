@@ -11,6 +11,12 @@
 		<result column="gender" property="gender"/>
 		<result column="department_id" property="departmentId"/>
 		<result column="role" property="role"/>
+		<association property="department" resultMap="department"/>
+	</resultMap>
+	
+	<!-- マッピング定義 -->
+	<resultMap id="user" type="com.example.domain.user.model.Department" id="department">
+		<id column="department_id" property="departmentId">
 	</resultMap>
 	
     <insert id="insertOne">
@@ -32,7 +38,14 @@
     
     <!-- ユーザー取得(一件) -->
     <select id="findOne" resultType="MUser">
-        select * from m_user where user_id = #{userId}
+        select 
+        	* 
+        from
+        	m_user 
+        	left join m_department
+        		on m_user.department_id=m_department.department_id
+        where
+        	user_id = #{userId}
     </select>
     
     <!-- ユーザー一件更新 -->
