@@ -94,9 +94,9 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:echo="item:*{salaryList}">
+								<tr th:each="item:*{salaryList}">
 									<td th:text="${item.yearMonth}"></td>
-									<td th:text="${#numbers.formatInteger(itemsalary,3,'COMMA')}"></td>
+									<td th:text="${#numbers.formatInteger(item.salary,3,'COMMA')}"></td>
 								</tr>
 							</tbody>
 						</table>
