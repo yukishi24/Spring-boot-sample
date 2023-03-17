@@ -52,9 +52,8 @@
         m_department.department_name,
         t_salary.user_id as salary_user_id,
         t_salary.year_month as salary_year_month,
-        t_salary.salary as salary_salary,
-        from
-        m_user
+        t_salary.salary as salary_salary
+        from m_user
         left join m_department
         on m_user.department_id = m_department.department_id
         left join t_salary
