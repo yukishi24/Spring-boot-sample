@@ -53,7 +53,7 @@ dependencies {
 
   //  AOP
   // https://mvnrepository.com/artifact/org.springframework/spring-aop
-  implementation("org.springframework:spring-aop:5.3.22")
+  implementation 'org.springframework:spring-aop:6.0.6'
 
   //  AspectJ
   // https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
