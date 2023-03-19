@@ -50,6 +50,14 @@ dependencies {
   // layout
   // https://mvnrepository.com/artifact/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect
   implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.5.3'
+
+  //  AOP
+  // https://mvnrepository.com/artifact/org.springframework/spring-aop
+  implementation 'org.springframework:spring-aop:6.0.6'
+
+  //  AspectJ
+  // https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
+  runtimeOnly 'org.aspectj:aspectjweaver:1.9.9.1'
 }
 
 tasks.named('test') {
