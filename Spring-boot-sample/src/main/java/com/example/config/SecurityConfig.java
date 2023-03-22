@@ -18,7 +18,11 @@ public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    http
+    http.formLogin(login -> login.loginProcessingUrl("/login") // ログイン処理のパス
+        .loginPage("/login") // ログインページ
+        .failureUrl("/login?error") // 失敗時
+        .usernameParameter("userId").passwordParameter("password")
+        .defaultSuccessUrl("/userList", true))
         .authorizeHttpRequests(authz -> authz.requestMatchers("/login").permitAll() // 直リンクOK
             .requestMatchers("/user/signup").permitAll() // 直リンクOK
             .anyRequest().authenticated());
