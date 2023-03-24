@@ -36,7 +36,6 @@ dependencies {
   // https://mvnrepository.com/artifact/org.modelmapper/modelmapper
   implementation 'org.modelmapper:modelmapper:3.1.0'
 
-
   // Bootstrap
   // https://mvnrepository.com/artifact/org.webjars/bootstrap
   implementation 'org.webjars:bootstrap:4.5.3'
@@ -60,6 +59,10 @@ dependencies {
   //  AspectJ
   // https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
   runtimeOnly 'org.aspectj:aspectjweaver:1.9.9.1'
+
+  //  Thymeleaf拡張機能(Security)
+  // https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5
+  implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE'
 }
 
 tasks.named('test') {
