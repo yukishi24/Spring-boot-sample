@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
 
   @Autowired
   private UserMapper mapper;
-  
+
   @Autowired
   private PasswordEncoder encoder;
 
@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
   public void signup(MUser user) {
     user.setDepartmentId(1);// 部署
     user.setRole("ROLE_GENERAL");// ロール
-    //    パスワードの暗号化
+    // パスワードの暗号化
     String rawPassword = user.getPassword();
     user.setPassword(encoder.encode(rawPassword));
     mapper.insertOne(user);
@@ -56,5 +56,11 @@ public class UserServiceImpl implements UserService {
   @Override
   public void deleteOne(String userId) {
     int count = mapper.deleteOne(userId);
+  }
+
+  // ログインユーザー情報取得
+  @Override
+  public MUser getLoginUser(String userId) {
+    return mapper.findLoginUser(userId);
   }
 }
