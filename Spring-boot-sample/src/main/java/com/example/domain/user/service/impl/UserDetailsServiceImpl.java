@@ -9,11 +9,9 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 import com.example.domain.user.model.MUser;
 import com.example.domain.user.service.UserService;
 
-@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
   @Autowired
   private UserService service;
@@ -25,13 +23,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     // ユーザーが存在しない場合
     if (loginUser == null) {
-      throw new UsernameNotFoundException("user nor found");
+      throw new UsernameNotFoundException("user not found");
     }
 
     // 権限List作成
     GrantedAuthority authority = new SimpleGrantedAuthority(loginUser.getRole());
 
-    List<GrantedAuthority> authorities = new ArrayList<>();
+    List<GrantedAuthority> authorities = new ArrayList<>(List.of(authority));
     authorities.add(authority);
 
     // UserDetails作成
