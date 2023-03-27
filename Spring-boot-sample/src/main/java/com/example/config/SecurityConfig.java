@@ -52,14 +52,13 @@ public class SecurityConfig {
         .authorizeHttpRequests(authz -> authz.requestMatchers("/login").permitAll() // 直リンクOK
             .requestMatchers("/user/signup").permitAll() // 直リンクOK
             .anyRequest().authenticated());
-    http.csrf().disable();
+    // http.csrf().disable();
     return http.build();
   }
 
   @Bean
   public UserDetailsManager users(DataSource dataSource) {
-    String userQuery =
-        "select user_id,password,true from m_user where user_id = ?";
+    String userQuery = "select user_id,password,true from m_user where user_id = ?";
     String authoritiesQuery = "select user_id,role from m_user where user_id = ?";
 
     JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
