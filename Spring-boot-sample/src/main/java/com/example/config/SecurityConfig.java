@@ -51,6 +51,7 @@ public class SecurityConfig {
             .logoutUrl("/logout").logoutSuccessUrl("/logout?logout"))
         .authorizeHttpRequests(authz -> authz.requestMatchers("/login").permitAll() // 直リンクOK
             .requestMatchers("/user/signup").permitAll() // 直リンクOK
+            .requestMatchers("/admin").hasAuthority("ROLE_ADMIN") // 権限制御
             .anyRequest().authenticated());
     // http.csrf().disable();
     return http.build();
