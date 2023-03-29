@@ -80,6 +80,9 @@ public class SignupController {
     // formをMUserクラスに変換
     MUser user = modelMapper.map(form, MUser.class);
 
+    // マッピングされないため手動でマップング
+    user.setBirthday(form.birthday());
+
     // formからMUserに変換時にうまくいかないため、Birthdayだけ別で変換。
     user.setBirthday(form.birthday());
     // ユーザー登録
