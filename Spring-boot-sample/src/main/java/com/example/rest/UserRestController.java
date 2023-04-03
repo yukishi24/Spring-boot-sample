@@ -14,7 +14,7 @@ import com.example.form.UserDetailForm;
 public class UserRestController {
 
 	@Autowired
-	private UserService userService;
+	UserService userService;
 
 	/**ユーザー更新
 	 * @param form
