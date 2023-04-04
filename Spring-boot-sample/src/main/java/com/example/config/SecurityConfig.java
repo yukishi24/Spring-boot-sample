@@ -1,6 +1,7 @@
 package com.example.config;
 
 import javax.sql.DataSource;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -51,6 +52,7 @@ public class SecurityConfig {
             .logoutUrl("/logout").logoutSuccessUrl("/logout?logout"))
         .authorizeHttpRequests(authz -> authz.requestMatchers("/login").permitAll() // 直リンクOK
             .requestMatchers("/user/signup").permitAll() // 直リンクOK
+            .requestMatchers("/user/signup/rest").permitAll() //直リンクOK
             .requestMatchers("/admin").hasAuthority("ROLE_ADMIN") // 権限制御
             .anyRequest().authenticated());
     // http.csrf().disable();
