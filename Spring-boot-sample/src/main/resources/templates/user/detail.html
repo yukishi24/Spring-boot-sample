@@ -12,6 +12,7 @@
 <!-- js -->
 <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+<script th:src="@{/js/user/detail.js}" defer></script>
 </head>
 <body>
 	<!-- header -->
@@ -67,10 +68,8 @@
 							</tr>
 							<tr>
 								<th>部署名</th>
-								<td>
-									<span th:if="*{department != null}"
-										th:text="*{department.departmentName}"></span>
-								</td>
+								<td><span th:if="*{department != null}"
+									th:text="*{department.departmentName}"></span></td>
 							</tr>
 						</tbody>
 					</table>
@@ -80,6 +79,15 @@
 						<button class="btn btn-danger" type="submit" name="delete">削除</button>
 						<!-- 更新ボタン -->
 						<button class="btn btn-primary" type="submit" name="update">更新</button>
+					</div>
+					<!-- RESTボタンエリア -->
+					<div class="text-center mt-2">
+						<!-- 削除ボタン -->
+						<button id="btn-delete" class="btn btn-danger" type="button">
+							削除(REST)</button>
+						<!-- 更新ボタン -->
+						<button id="btn-update" class="btn btn-primary" type="button">
+							更新(REST)</button>
 					</div>
 					<!-- 給料詳細 -->
 					<th:block th:if="*{salaryList != null and salaryList.size() > 0}">
