@@ -63,6 +63,16 @@ dependencies {
   //  Thymeleaf拡張機能(Security)
   // https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5
   implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE'
+  
+  //DataTable
+  // https://mvnrepository.com/artifact/org.webjars/datatables
+	implementation 'org.webjars:datatables:1.10.21'
+
+	//DataTable Plugin
+	// https://mvnrepository.com/artifact/org.webjars/datatables-plugins
+	runtimeOnly 'org.webjars:datatables-plugins:1.10.21'
+
+  
 }
 
 tasks.named('test') {
