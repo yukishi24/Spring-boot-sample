@@ -5,8 +5,10 @@ import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import lombok.Data;
 
 @Data
@@ -26,8 +28,10 @@ public class MUser {
 	private Integer departmentId;
 
 	private String role;
-	@Transient
+	@ManyToOne(optional = true)
+	@JoinColumn(insertable = false, updatable = false, name = "departmentId")
 	private Department department;
-	@Transient
+	@OneToMany
+    @JoinColumn(insertable = false, updatable = false, name = "userId")
 	private List<Salary> salaryList;
 }
